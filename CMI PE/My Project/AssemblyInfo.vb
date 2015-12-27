@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Werte der Assemblyattribute überprüfen
 
-<Assembly: AssemblyTitle("CMI PE")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("CMI PE")>
-<Assembly: AssemblyCopyright("Copyright ©  2015")>
+<Assembly: AssemblyTitle("Craftbyte Mod IDE for MCPE")>
+<Assembly: AssemblyDescription("An Minecraft Mod Development IDE for Minecraft PE Mod Developers.")>
+<Assembly: AssemblyCompany("Craftbyte Developments")>
+<Assembly: AssemblyProduct("Craftbyte Mod IDE for Minecraft Pocket Edition")>
+<Assembly: AssemblyCopyright("Copyright © 2015 Craftbyte Developments")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' übernehmen, indem Sie "*" eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("0.0.0.*")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
