@@ -22,6 +22,7 @@ Partial Class Form1
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -60,6 +61,7 @@ Partial Class Form1
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 377)
         Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.StatusStrip1.Size = New System.Drawing.Size(706, 22)
         Me.StatusStrip1.TabIndex = 0
         Me.StatusStrip1.Text = "StatusStrip1"
@@ -67,8 +69,7 @@ Partial Class Form1
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(111, 17)
-        Me.ToolStripStatusLabel1.Text = "Version 0.0.0.1alpha"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         '
         'MenuStrip1
         '
@@ -158,14 +159,14 @@ Partial Class Form1
         '
         Me.CompileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompileFileToolStripMenuItem})
         Me.CompileToolStripMenuItem.Name = "CompileToolStripMenuItem"
-        Me.CompileToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
-        Me.CompileToolStripMenuItem.Text = "Compile"
+        Me.CompileToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.CompileToolStripMenuItem.Text = "Save Mod"
         '
         'CompileFileToolStripMenuItem
         '
         Me.CompileFileToolStripMenuItem.Name = "CompileFileToolStripMenuItem"
         Me.CompileFileToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CompileFileToolStripMenuItem.Text = "Compile File"
+        Me.CompileFileToolStripMenuItem.Text = "Save Mod"
         '
         'HelpToolStripMenuItem
         '
@@ -177,13 +178,13 @@ Partial Class Form1
         'HelpToolStripMenuItem1
         '
         Me.HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
-        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(173, 22)
+        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.HelpToolStripMenuItem1.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'Panel1
@@ -199,9 +200,11 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GroupBox1.Location = New System.Drawing.Point(0, 32)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(200, 321)
@@ -230,6 +233,9 @@ Partial Class Form1
         '
         'Label2
         '
+        Me.Label2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(4, 16)
         Me.Label2.Name = "Label2"
@@ -239,6 +245,9 @@ Partial Class Form1
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(3, 3)
@@ -266,9 +275,9 @@ Partial Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
-        Me.Text = "Craftbyte Mod IDE for Minecraft Pocket Edition - Version 0.0.1beta"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)

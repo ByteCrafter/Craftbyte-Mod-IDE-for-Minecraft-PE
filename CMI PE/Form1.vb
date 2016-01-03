@@ -1,7 +1,35 @@
 ﻿Imports System.IO
 Imports System.Text
-
+Imports System.Text.RegularExpressions
 Public Class Form1
+    Public ReadOnly Version As String = "0.1.0beta"
+    Private Sub RichTextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles RichTextBox1.TextChanged
+
+        If RichTextBox1.TextLength > -1 Then 'Make sure there is some text in the RichTextBox first
+
+            Highlight("function", Color.Red)
+            Highlight("if", Color.Green)
+            Highlight("else", Color.Green)
+            Highlight("var", Color.Green)
+
+        End If
+
+    End Sub
+
+    Private Sub Highlight(ByVal word As String, ByVal clr As Color)
+        Dim reg As Regex = New Regex("\b" & word & "\b", RegexOptions.Multiline Or RegexOptions.IgnoreCase Or RegexOptions.IgnorePatternWhitespace)
+        Dim m_ As MatchCollection = reg.Matches(RichTextBox1.Text)
+        Dim pos As Integer = RichTextBox1.SelectionStart
+        For Each m As Match In m_
+            RichTextBox1.SelectionStart = m.Index
+            RichTextBox1.SelectionLength = m.Length
+            RichTextBox1.SelectionColor = clr
+        Next
+        RichTextBox1.SelectionStart = pos
+        RichTextBox1.SelectionLength = 0
+        RichTextBox1.SelectionColor = RichTextBox1.ForeColor
+    End Sub
+
     Private Sub UndoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UndoToolStripMenuItem.Click
         RichTextBox1.Undo()
     End Sub
@@ -59,6 +87,8 @@ Public Class Form1
             IO.Directory.CreateDirectory("C:\Craftbyte Mod IDE for MCPE")
             IO.Directory.CreateDirectory("C:\Craftbyte Mod IDE for MCPE\Files")
         End If
+        ToolStripStatusLabel1.Text = "Version " & Version
+        Me.Text = "Craftbyte Mod IDE for Minecraft Pocket Edition - Version " & Version
     End Sub
 
     Private Sub OpenFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenFileToolStripMenuItem.Click
@@ -70,6 +100,7 @@ Public Class Form1
                     reader.Close()
                 End Using
             End If
+            Label4.Text = ofd.FileName
         Catch ex As Exception
             MessageBox.Show("An error occured. Error: " & ex.Message & " - Please contact the developer for help and informations!", "An error occured while saving an file!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -89,7 +120,8 @@ Public Class Form1
                 Using outfile As StreamWriter = New StreamWriter(sfd.FileName + ".js", True)
                     Await outfile.WriteAsync(sb.ToString())
                 End Using
-                MessageBox.Show("Successfully compiled the file!", "File saved!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Label4.Text = sfd.FileName
+                MessageBox.Show("Successfully saved your Mod!", "Mod saved!", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBox.Show("An error occured. Error: " & ex.Message & " - Please contact the developer for help and informations!", "An error occured while saving an file!", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -102,6 +134,10 @@ Public Class Form1
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-        MessageBox.Show("Craftbyte Mod IDE for Minecraft Pocket Edition - (C)2015 Craftbyte Developments" & Environment.NewLine & "Version 0.0.1beta", "About", MessageBoxButtons.OK, MessageBoxIcon.None)
+        MessageBox.Show("Craftbyte Mod IDE for Minecraft Pocket Edition - (C)2015 Craftbyte Developments" & Environment.NewLine & "Version " & Version, "About", MessageBoxButtons.OK, MessageBoxIcon.None)
+    End Sub
+
+    Private Sub RichTextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox1.KeyDown
+
     End Sub
 End Class
