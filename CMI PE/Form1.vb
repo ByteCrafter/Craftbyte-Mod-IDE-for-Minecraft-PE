@@ -4,16 +4,10 @@ Imports System.Text.RegularExpressions
 Public Class Form1
     Public ReadOnly Version As String = "0.1.0beta"
     Private Sub RichTextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles RichTextBox1.TextChanged
-
-        If RichTextBox1.TextLength > -1 Then 'Make sure there is some text in the RichTextBox first
-
-            Highlight("function", Color.Red)
-            Highlight("if", Color.Green)
-            Highlight("else", Color.Green)
-            Highlight("var", Color.Green)
-
-        End If
-
+        Highlight("function", Color.Red)
+        Highlight("if", Color.Green)
+        Highlight("else", Color.Green)
+        Highlight("var", Color.Green)
     End Sub
 
     Private Sub Highlight(ByVal word As String, ByVal clr As Color)
